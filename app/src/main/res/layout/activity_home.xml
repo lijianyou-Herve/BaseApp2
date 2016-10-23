@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBackGround"
+    tools:context=".ui.main.HomeActivity">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="@color/select_color"
+        app:tabTextColor="@color/normal_color">
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tab_layout">
+    </android.support.v4.view.ViewPager>
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        app:menu="@menu/tab_home_menu">
+    </android.support.design.widget.BottomNavigationView>
+
+</RelativeLayout>
