@@ -1,7 +1,5 @@
 package comte.example.herve.baseapp.ui.main.presenter;
 
-import android.view.View;
-
 import comte.example.herve.baseapp.base.presenter.MvpBasePresenter;
 
 /**
@@ -21,13 +19,13 @@ public class MainPresenterView extends MvpBasePresenter<MainConstant.PresenterVi
 
     @Override
     public void loadData() {
-        mPresenter.setProgressVisibility(View.VISIBLE);
+        mPresenterView.showDialog();
 
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mPresenter.success();
-                mPresenter.setProgressVisibility(View.GONE);
+                mPresenterView.success();
+                mPresenterView.dismissDialog();
             }
         },200);
 

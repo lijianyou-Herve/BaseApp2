@@ -23,7 +23,5 @@ public interface WorkContract {
 
     interface PresenterView extends BasePresenterView {
 
-        void setProgressVisibility(int visibility);
-
     }
 }

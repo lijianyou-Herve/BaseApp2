@@ -1,13 +1,13 @@
 package comte.example.herve.baseapp.ui.main.adapter;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import comte.example.herve.baseapp.base.ui.BaseFragment;
 import comte.example.herve.baseapp.ui.main.Fragments.life.LifeFragment;
 import comte.example.herve.baseapp.ui.main.Fragments.work.WorkFragment;

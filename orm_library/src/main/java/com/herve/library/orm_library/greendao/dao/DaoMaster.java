@@ -1,4 +1,4 @@
-package comte.example.herve.baseapp.greendao.dao;
+package com.herve.library.orm_library.greendao.dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

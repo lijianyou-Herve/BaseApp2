@@ -1,8 +1,6 @@
 package comte.example.herve.baseapp.ui.main.Fragments.life.presenter;
 
 
-import android.view.View;
-
 import comte.example.herve.baseapp.base.presenter.MvpBasePresenter;
 
 
@@ -25,13 +23,13 @@ public class LifePresenter extends MvpBasePresenter<LifeContract.PresenterView> 
 
     @Override
     public void loading() {
-        mPresenter.setProgressVisibility(View.VISIBLE);
+        mPresenterView.showDialog();
 
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mPresenter.setProgressVisibility(View.GONE);
-                mPresenter.success();
+                mPresenterView.dismissDialog();
+                mPresenterView.success();
             }
         }, 1000);
 

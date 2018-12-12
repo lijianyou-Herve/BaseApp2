@@ -1,16 +1,15 @@
 package comte.example.herve.baseapp.ui.main.Fragments.life.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-
 import java.util.ArrayList;
 
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import comte.example.herve.baseapp.R;

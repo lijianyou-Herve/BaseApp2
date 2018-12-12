@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'//GreenDao
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.herve.library.orm_library.greendao.dao'
+        targetGenDir 'src/main/java'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+
+    /*GreenDAO数据库------------依据博客地址：[http://www.jianshu.com/p/853401a7d02b]*/
+    api "org.greenrobot:greendao:${versions.greendao}"
+
+}

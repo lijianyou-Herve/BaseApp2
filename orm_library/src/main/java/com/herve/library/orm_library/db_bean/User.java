@@ -1,4 +1,4 @@
-package comte.example.herve.baseapp.bean;
+package com.herve.library.orm_library.db_bean;
 
 /**
  * Created           :Herve on 2016/10/23.

@@ -1,16 +1,16 @@
 package comte.example.herve.baseapp.ui.main;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.ContentLoadingProgressBar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import comte.example.herve.baseapp.R;
 import comte.example.herve.baseapp.base.ui.BaseFragment;
@@ -30,12 +30,9 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     BottomNavigationView bottomView;
     @BindView(R.id.activity_home)
     RelativeLayout activityHome;
-    @BindView(R.id.progress_bar)
-    ContentLoadingProgressBar progressBar;
 
     private FragmentsAdapter fragmentsAdapter;
     private String TAG = getClass().getSimpleName();
-
 
     @Override
     protected int initLayoutId() {
@@ -45,7 +42,6 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     @Override
     protected void findViewById() {
         //if you using butterKnife you can doNothing
-
     }
 
     @Override
@@ -97,10 +93,14 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
         return new MainPresenterView(this);
     }
 
+    @Override
+    public void showDialog() {
+
+    }
 
     @Override
-    public void setProgressVisibility(int visibility) {
-        progressBar.setVisibility(visibility);
+    public void dismissDialog() {
+
     }
 
     @Override
@@ -108,7 +108,6 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
         fragmentsAdapter = new FragmentsAdapter(getSupportFragmentManager(), mContext);
 
         ArrayList<BaseFragment> data = new ArrayList<>();
-
 
         for (int i = 0; i < 3; i++) {
             BaseFragment baseFragment;

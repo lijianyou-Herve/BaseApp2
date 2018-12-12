@@ -6,7 +6,9 @@ package comte.example.herve.baseapp.base.presenter;
 
 public interface BasePresenterView {
 
-    void setProgressVisibility(int visibility);
+    void showDialog();
+
+    void dismissDialog();
 
     void success();
 

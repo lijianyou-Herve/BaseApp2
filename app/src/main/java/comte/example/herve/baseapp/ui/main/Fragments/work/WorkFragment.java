@@ -2,6 +2,7 @@ package comte.example.herve.baseapp.ui.main.Fragments.work;
 
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import butterknife.BindView;
@@ -25,7 +26,6 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
     @BindView(R.id.progress)
     ProgressBar progress;
 
-
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
         return fragment;
@@ -38,8 +38,14 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
     }
 
     @Override
-    public void setProgressVisibility(int visibility) {
-        progress.setVisibility(visibility);
+    public void showDialog() {
+        progress.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dismissDialog() {
+        progress.setVisibility(View.GONE);
+
     }
 
     @Override

@@ -1,12 +1,11 @@
 package comte.example.herve.baseapp.ui.main.Fragments.life;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import comte.example.herve.baseapp.R;
 import comte.example.herve.baseapp.base.ui.MvpBaseFragment;
@@ -16,9 +15,8 @@ import comte.example.herve.baseapp.ui.main.Fragments.life.presenter.LifeContract
 import comte.example.herve.baseapp.ui.main.Fragments.life.presenter.LifePresenter;
 import comte.example.herve.baseapp.utils.fastjson.FastJsonParser;
 import comte.example.herve.baseapp.utils.string.StringUtils;
-import rx.Observable;
-import rx.functions.Action1;
-
+import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 
 /**
  * Created           :Herve on 2016/10/10.
@@ -33,9 +31,6 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
 
     @BindView(R.id.recycle_view_life)
     RecyclerView recycleViewLife;
-    @BindView(R.id.progress)
-    ProgressBar progress;
-
 
     public static LifeFragment newInstance() {
         LifeFragment fragment = new LifeFragment();
@@ -49,8 +44,12 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
     }
 
     @Override
-    public void setProgressVisibility(int visibility) {
-        progress.setVisibility(visibility);
+    public void showDialog() {
+
+    }
+
+    @Override
+    public void dismissDialog() {
 
     }
 
@@ -64,15 +63,15 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
 
         ArrayList<SquareBean> data = (ArrayList<SquareBean>) FastJsonParser.getInstance().listFromJson(jsonDta, SquareBean.class);
 
-        Observable.from(data)
-                .subscribe(new Action1<SquareBean>() {
+        Observable.fromIterable(data)
+                .map(new Function<SquareBean, SquareBean>() {
                     @Override
-                    public void call(SquareBean squareBean) {
+                    public SquareBean apply(SquareBean squareBean) throws Exception {
                         squareBean.setTitle(squareBean.getTitle() + squareBean.getResId());
                         squareBean.setResId(R.drawable.ic_donut_small_black_24dp);
-
+                        return squareBean;
                     }
-                });
+                }).subscribe();
 
         lifeAdapter.setData(data);
 

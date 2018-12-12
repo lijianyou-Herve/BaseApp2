@@ -1,8 +1,8 @@
 package comte.example.herve.baseapp.base.ui;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
+import androidx.annotation.Nullable;
 import comte.example.herve.baseapp.base.presenter.BasePresenter;
 
 /**
@@ -16,8 +16,16 @@ public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActiv
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = initPresenter();
-
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detach();//在presenter中解绑释放view
+            mPresenter = null;
+        }
     }
 
     protected abstract P initPresenter();
