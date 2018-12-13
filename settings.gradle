@@ -1,1 +1,1 @@
-include ':app', ':orm_library'
+include ':app', ':orm_library', ':http_library', ':common_library'

@@ -1,25 +1,22 @@
-package comte.example.herve.baseapp.base.ui;
+package comte.example.herve.baseapp.base.view;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Toast;
+
+import com.trello.rxlifecycle3.components.support.RxFragment;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends RxFragment {
     protected BaseActivity mContext;
     protected View mRootView;
     protected Unbinder mUnbinder;
     protected String tittle;
-
 
     protected boolean mIsViewInitiated;
     protected boolean mIsVisibleToUser;
@@ -74,9 +71,14 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mRootView = inflater.inflate(initLayoutId(), null, false);
         mUnbinder = ButterKnife.bind(this, mRootView);
+        baseCreate();
         findViewById();
         initView();
         return mRootView;
+    }
+
+    protected void baseCreate() {
+
     }
 
     @Override
@@ -85,55 +87,11 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
     }
 
-    //获取状态栏的高度
-    protected int getstatusBarHeight() {
-
-        return statusBarHeight();
-    }
-
-
-    //获取屏幕的高度
-    protected int getScreenHeight() {
-
-        return screenHeight();
-    }
-
-    //获取屏幕的宽度
-    protected int getScreenWidth() {
-
-        return screenWidth();
-    }
-
-    protected void showToast(String message) {
-        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
-    }
-
-    private int statusBarHeight() {
-        Rect frame = new Rect();
-        mContext.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
-        return frame.top;
-    }
-
-    private int screenHeight() {
-
-        return mContext.getWindow().getDecorView().getHeight();
-    }
-
-    private int screenWidth() {
-
-        return mContext.getWindow().getDecorView().getWidth();
-    }
-
     public String getTittle() {
         return tittle;
     }
 
     public void setTittle(String tittle) {
         this.tittle = tittle;
-    }
-
-    private View getContentView() {
-
-        return mContext.getWindow().findViewById(Window.ID_ANDROID_CONTENT);
     }
 }

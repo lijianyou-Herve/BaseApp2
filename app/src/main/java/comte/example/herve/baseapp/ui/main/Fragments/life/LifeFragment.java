@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import comte.example.herve.baseapp.R;
-import comte.example.herve.baseapp.base.ui.MvpBaseFragment;
+import comte.example.herve.baseapp.base.view.MvpBaseFragment;
 import comte.example.herve.baseapp.bean.SquareBean;
 import comte.example.herve.baseapp.ui.main.Fragments.life.adapter.LifeAdapter;
 import comte.example.herve.baseapp.ui.main.Fragments.life.presenter.LifeContract;
@@ -54,7 +54,7 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
     }
 
     @Override
-    public void success() {
+    public void getData() {
         LifeAdapter lifeAdapter = new LifeAdapter(mContext);
 
 
@@ -79,11 +79,6 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
         recycleViewLife.setLayoutManager(layoutManager);
         recycleViewLife.setAdapter(lifeAdapter);
 
-    }
-
-    @Override
-    public void error() {
-        showToast("加载失败！");
     }
 
     @Override

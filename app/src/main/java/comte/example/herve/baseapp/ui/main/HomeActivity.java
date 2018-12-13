@@ -13,12 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import comte.example.herve.baseapp.R;
-import comte.example.herve.baseapp.base.ui.BaseFragment;
-import comte.example.herve.baseapp.base.ui.MvpBaseActivity;
+import comte.example.herve.baseapp.base.view.BaseFragment;
+import comte.example.herve.baseapp.base.view.MvpBaseActivity;
 import comte.example.herve.baseapp.ui.main.Fragments.life.LifeFragment;
 import comte.example.herve.baseapp.ui.main.adapter.FragmentsAdapter;
 import comte.example.herve.baseapp.ui.main.presenter.MainConstant;
-import comte.example.herve.baseapp.ui.main.presenter.MainPresenterView;
+import comte.example.herve.baseapp.ui.main.presenter.MainPresenter;
 
 public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implements MainConstant.PresenterView {
 
@@ -90,22 +90,12 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
 
     @Override
     protected MainConstant.Presenter initPresenter() {
-        return new MainPresenterView(this);
+        return new MainPresenter(this);
     }
 
     @Override
-    public void showDialog() {
-
-    }
-
-    @Override
-    public void dismissDialog() {
-
-    }
-
-    @Override
-    public void success() {
-        fragmentsAdapter = new FragmentsAdapter(getSupportFragmentManager(), mContext);
+    public void getDate() {
+        fragmentsAdapter = new FragmentsAdapter(getSupportFragmentManager(), mActivity);
 
         ArrayList<BaseFragment> data = new ArrayList<>();
 
@@ -133,8 +123,12 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     }
 
     @Override
-    public void error() {
+    public void showDialog() {
 
     }
 
+    @Override
+    public void dismissDialog() {
+
+    }
 }

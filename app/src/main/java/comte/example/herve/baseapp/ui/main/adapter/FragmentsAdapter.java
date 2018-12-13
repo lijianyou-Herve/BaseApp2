@@ -8,7 +8,7 @@ import java.util.List;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import comte.example.herve.baseapp.base.ui.BaseFragment;
+import comte.example.herve.baseapp.base.view.BaseFragment;
 import comte.example.herve.baseapp.ui.main.Fragments.life.LifeFragment;
 import comte.example.herve.baseapp.ui.main.Fragments.work.WorkFragment;
 

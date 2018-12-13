@@ -60,10 +60,16 @@ dependencies {
     /*==Rxjava end==*/
     implementation "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
     implementation "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
+
+    implementation 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
+    // If you want pre-written Activities and Fragments you can subclass as providers
+    implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
     /*内存泄漏检测工具leakcanary*/
     //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     //    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testImplementation 'junit:junit:4.12'
     implementation project(':orm_library')
+    implementation project(':common_library')
+    implementation project(':http_library')
 }

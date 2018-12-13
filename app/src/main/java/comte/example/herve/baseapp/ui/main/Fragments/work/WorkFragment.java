@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 
 import butterknife.BindView;
 import comte.example.herve.baseapp.R;
-import comte.example.herve.baseapp.base.ui.MvpBaseFragment;
+import comte.example.herve.baseapp.base.view.MvpBaseFragment;
 import comte.example.herve.baseapp.ui.main.Fragments.work.presenter.WorkContract;
 import comte.example.herve.baseapp.ui.main.Fragments.work.presenter.WorkPresenter;
 
@@ -21,7 +21,6 @@ import comte.example.herve.baseapp.ui.main.Fragments.work.presenter.WorkPresente
  * @ version
  */
 public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implements WorkContract.PresenterView {
-
 
     @BindView(R.id.progress)
     ProgressBar progress;
@@ -49,17 +48,6 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
     }
 
     @Override
-    public void success() {
-
-    }
-
-    @Override
-    public void error() {
-        showToast("加载失败");
-
-    }
-
-    @Override
     protected WorkContract.Presenter initPresenter() {
         return new WorkPresenter(this);
     }
@@ -82,7 +70,6 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
     @Override
     protected void initData() {
         mPresenter.loading();
-
     }
 
     @Override
