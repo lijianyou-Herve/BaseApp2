@@ -85,8 +85,8 @@ public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> 
                 }
             }
         })
-                .compose(RxLifecycle.bind(mPresenterView.lifecycle()))
-                .compose(RxLifecycleAndroid.bindActivity(mPresenterView.lifecycle()))
+//                .compose(RxLifecycle.bind(mPresenterView.lifecycle()))
+//                .compose(RxLifecycleAndroid.bindActivity(mPresenterView.lifecycle()))
                 .compose(mPresenterView.bindUntilEvent(ActivityEvent.PAUSE))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
