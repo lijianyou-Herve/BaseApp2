@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.trello.rxlifecycle3.android.ActivityEvent;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,13 @@ import comte.example.herve.baseapp.ui.main.Fragments.life.LifeFragment;
 import comte.example.herve.baseapp.ui.main.adapter.FragmentsAdapter;
 import comte.example.herve.baseapp.ui.main.presenter.MainConstant;
 import comte.example.herve.baseapp.ui.main.presenter.MainPresenter;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implements MainConstant.PresenterView {
 
@@ -53,6 +61,52 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     protected void initData() {
         mPresenter.loadData();
 
+
+        Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
+                Thread.sleep(8000);
+                if (!emitter.isDisposed()) {
+                    Log.i(TAG, "subscribe: 没有取消");
+                    emitter.onNext(true);
+                    emitter.onComplete();
+                } else {
+                    Log.i(TAG, "subscribe: 被取消");
+                }
+            }
+        })
+//                .compose(RxLifecycle.bind(mPresenterView.lifecycle()))
+//                .compose(RxLifecycleAndroid.bindActivity(mPresenterView.lifecycle()))
+                .compose(bindUntilEvent(ActivityEvent.PAUSE))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+//                .as(bindLifecycle())//AutoDispose
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        showDialog();
+                        Log.i(TAG, "onSubscribe: ");
+                    }
+
+                    @Override
+                    public void onNext(Boolean aBoolean) {
+
+                        Log.i(TAG, "onNext: ");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.i(TAG, "onError: ");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        dismissDialog();
+                        Log.i(TAG, "onComplete: ");
+                    }
+                });
+
     }
 
     @Override
@@ -75,12 +129,9 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
                         vpHome.setCurrentItem(2);
                         break;
                     default:
-
                         Log.w(TAG, "onNavigationItemSelected: you have not get the MenuItem id");
-
                         break;
                 }
-
                 return false;
             }
         });

@@ -5,9 +5,7 @@ import android.util.Log;
 import com.herve.library.commonlibrary.bean.LoginBean;
 import com.herve.library.commonlibrary.utils.LogUtils;
 import com.herve.library.httplibrary.Api;
-import com.trello.rxlifecycle3.RxLifecycle;
 import com.trello.rxlifecycle3.android.ActivityEvent;
-import com.trello.rxlifecycle3.android.RxLifecycleAndroid;
 
 import java.util.HashMap;
 
@@ -90,6 +88,7 @@ public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> 
                 .compose(mPresenterView.bindUntilEvent(ActivityEvent.PAUSE))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+//                .as(bindLifecycle())//AutoDispose
                 .subscribe(new Observer<Boolean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
