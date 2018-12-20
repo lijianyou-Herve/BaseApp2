@@ -1,16 +1,17 @@
 package comte.example.herve.baseapp.ui.main;
 
+import android.app.ProgressDialog;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.trello.rxlifecycle3.android.ActivityEvent;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import comte.example.herve.baseapp.R;
@@ -41,6 +42,7 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
 
     private FragmentsAdapter fragmentsAdapter;
     private String TAG = getClass().getSimpleName();
+    private ProgressDialog progressDialog;
 
     @Override
     protected int initLayoutId() {
@@ -48,12 +50,8 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     }
 
     @Override
-    protected void findViewById() {
-        //if you using butterKnife you can doNothing
-    }
-
-    @Override
     protected void initView() {
+        progressDialog = new ProgressDialog(mActivity);
 
     }
 
@@ -61,11 +59,9 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     protected void initData() {
         mPresenter.loadData();
 
-
         Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
-                Thread.sleep(8000);
                 if (!emitter.isDisposed()) {
                     Log.i(TAG, "subscribe: 没有取消");
                     emitter.onNext(true);
@@ -75,12 +71,9 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
                 }
             }
         })
-//                .compose(RxLifecycle.bind(mPresenterView.lifecycle()))
-//                .compose(RxLifecycleAndroid.bindActivity(mPresenterView.lifecycle()))
-                .compose(bindUntilEvent(ActivityEvent.PAUSE))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-//                .as(bindLifecycle())//AutoDispose
+                .as(bindLifecycle(Lifecycle.Event.ON_PAUSE))//AutoDispose
                 .subscribe(new Observer<Boolean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -175,11 +168,12 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
 
     @Override
     public void showDialog() {
-
+        progressDialog.show();
     }
 
     @Override
     public void dismissDialog() {
+        progressDialog.dismiss();
 
     }
 }

@@ -1,8 +1,5 @@
 package comte.example.herve.baseapp.ui.main.Fragments.work.presenter;
 
-
-import com.trello.rxlifecycle3.android.FragmentEvent;
-
 import comte.example.herve.baseapp.base.presenter.BasePresenter;
 import comte.example.herve.baseapp.base.presenter.BasePresenterView;
 
@@ -22,7 +19,7 @@ public interface WorkContract {
         void loading();
     }
 
-    interface PresenterView extends BasePresenterView<FragmentEvent> {
+    interface PresenterView extends BasePresenterView {
 
     }
 }

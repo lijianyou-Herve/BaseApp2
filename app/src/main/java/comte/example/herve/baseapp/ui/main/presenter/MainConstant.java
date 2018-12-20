@@ -1,6 +1,5 @@
 package comte.example.herve.baseapp.ui.main.presenter;
 
-import com.trello.rxlifecycle3.android.ActivityEvent;
 
 import comte.example.herve.baseapp.base.presenter.BasePresenter;
 import comte.example.herve.baseapp.base.presenter.BasePresenterView;
@@ -24,7 +23,7 @@ public interface MainConstant {
 
     }
 
-    interface PresenterView extends BasePresenterView<ActivityEvent> {
+    interface PresenterView extends BasePresenterView {
 
         void getDate();
 

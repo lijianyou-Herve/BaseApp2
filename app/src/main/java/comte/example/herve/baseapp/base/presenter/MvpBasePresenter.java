@@ -31,11 +31,16 @@ public abstract class MvpBasePresenter<V extends BasePresenterView> implements I
         }
     }
 
+    protected <T> AutoDisposeConverter<T> bindLifecycle(Lifecycle.Event untilEvent) {
+        if (null == lifecycleOwner)
+            throw new NullPointerException("lifecycleOwner == null");
+        return RxLifecycleUtils.bindLifecycle(lifecycleOwner, untilEvent);
+    }
+
     protected <T> AutoDisposeConverter<T> bindLifecycle() {
         if (null == lifecycleOwner)
             throw new NullPointerException("lifecycleOwner == null");
         return RxLifecycleUtils.bindLifecycle(lifecycleOwner);
-
     }
 
     @Override
@@ -45,11 +50,10 @@ public abstract class MvpBasePresenter<V extends BasePresenterView> implements I
 
     @Override
     public void setLifecycleOwner(LifecycleOwner lifecycleOwner) {
-
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     public void onCreate(@NotNull LifecycleOwner owner) {
-        this.lifecycleOwner = owner;
     }
 
     @Override

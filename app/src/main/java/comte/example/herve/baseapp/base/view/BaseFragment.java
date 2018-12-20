@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.trello.rxlifecycle3.components.support.RxFragment;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends RxFragment {
+public abstract class BaseFragment extends Fragment {
     protected BaseActivity mContext;
     protected View mRootView;
     protected Unbinder mUnbinder;

@@ -2,8 +2,6 @@ package comte.example.herve.baseapp.base.view;
 
 import android.os.Bundle;
 
-import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
@@ -19,15 +17,13 @@ import butterknife.Unbinder;
  * @ version
  */
 
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected AppCompatActivity mActivity;
     protected Unbinder mUnBinder;
     private String TAG = getClass().getSimpleName();
 
     protected abstract int initLayoutId();
-
-    protected abstract void findViewById();
 
     protected abstract void initView();
 
@@ -43,11 +39,9 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         mActivity = this;
         baseActivityCreate();
 
-        findViewById();
+        initView();
 
         initData();
-
-        initView();
 
         initListener();
     }

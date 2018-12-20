@@ -5,7 +5,6 @@ import android.util.Log;
 import com.herve.library.commonlibrary.bean.LoginBean;
 import com.herve.library.commonlibrary.utils.LogUtils;
 import com.herve.library.httplibrary.Api;
-import com.trello.rxlifecycle3.android.ActivityEvent;
 
 import java.util.HashMap;
 
@@ -44,9 +43,9 @@ public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> 
         map.put("mac", "mac");
         Api.getService_PHP()
                 .login("login", map)
-                .compose(mPresenterView.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .as(bindLifecycle())
                 .subscribe(new Observer<LoginBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -70,48 +69,49 @@ public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> 
                     }
                 });
 
-        Observable.create(new ObservableOnSubscribe<Boolean>() {
+        Observable.create(new ObservableOnSubscribe<Long>() {
             @Override
-            public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
-                Thread.sleep(8000);
-                if (!emitter.isDisposed()) {
-                    Log.i(TAG, "subscribe: 没有取消");
-                    emitter.onNext(true);
-                    emitter.onComplete();
-                } else {
-                    Log.i(TAG, "subscribe: 被取消");
+            public void subscribe(ObservableEmitter<Long> emitter) {
+
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    if (!emitter.isDisposed()) {
+                        emitter.onError(e);
+                    }
                 }
+                emitter.onNext(100L);
+                emitter.onComplete();
+                Log.i(TAG, "subscribe: " + Thread.currentThread().getName());
             }
         })
-//                .compose(RxLifecycle.bind(mPresenterView.lifecycle()))
-//                .compose(RxLifecycleAndroid.bindActivity(mPresenterView.lifecycle()))
-                .compose(mPresenterView.bindUntilEvent(ActivityEvent.PAUSE))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-//                .as(bindLifecycle())//AutoDispose
-                .subscribe(new Observer<Boolean>() {
+                .as(bindLifecycle())//AutoDispose
+                .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         mPresenterView.showDialog();
-                        Log.i(TAG, "onSubscribe: ");
+                        Log.i(TAG, "onSubscribe: " + Thread.currentThread().getName());
                     }
 
                     @Override
-                    public void onNext(Boolean aBoolean) {
+                    public void onNext(Long aLong) {
+                        Log.i(TAG, "onNext: " + Thread.currentThread().getName());
 
-                        Log.i(TAG, "onNext: ");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
                         Log.i(TAG, "onError: ");
+                        mPresenterView.dismissDialog();
                     }
 
                     @Override
                     public void onComplete() {
                         mPresenterView.dismissDialog();
-                        Log.i(TAG, "onComplete: ");
+                        Log.i(TAG, "onComplete: " + Thread.currentThread().getName());
                     }
                 });
 

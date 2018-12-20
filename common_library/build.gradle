@@ -32,4 +32,9 @@ dependencies {
 
     //Log
     api 'com.orhanobut:logger:1.15'
+
+    /*RxJava*/
+    /*==Rxjava end==*/
+    api "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
+    api "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
 }

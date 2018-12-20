@@ -56,14 +56,6 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:${versions.buter_kinfe}"
     /*Json解析工具*/
     implementation "com.alibaba:fastjson:${versions.fast_json}.android"
-    /*RxJava*/
-    /*==Rxjava end==*/
-    implementation "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
-    implementation "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
-
-    implementation 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
-    // If you want pre-written Activities and Fragments you can subclass as providers
-    implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
 
     implementation 'com.uber.autodispose:autodispose:1.1.0'
     implementation 'com.uber.autodispose:autodispose-android-archcomponents:1.1.0'
