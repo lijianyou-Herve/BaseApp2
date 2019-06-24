@@ -72,29 +72,29 @@ public class ExceptionHelper {
         e.printStackTrace();
         String error;
         if (e instanceof SocketTimeoutException) {//网络超时
-            LogUtils.loge("网络连接异常: " + e.getMessage());
+            LogUtils.e("网络连接异常: " + e.getMessage());
             error = "网络连接异常";
         } else if (e instanceof ConnectException) { //均视为网络错误
-            LogUtils.loge("网络连接异常: " + e.getMessage());
+            LogUtils.e("网络连接异常: " + e.getMessage());
             error = "网络连接异常";
         } else if (e instanceof JsonParseException
                 || e instanceof JSONException
                 || e instanceof ParseException) {   //均视为解析错误
-            LogUtils.loge("数据出错: " + e.getMessage());
+            LogUtils.e("数据出错: " + e.getMessage());
             error = "数据解析异常";
         } else if (e instanceof ApiException) {//服务器返回的错误信息
             error = e.getMessage();
         } else if (e instanceof UnknownHostException) {
-            LogUtils.loge("网络连接异常: " + e.getMessage());
+            LogUtils.e("网络连接异常: " + e.getMessage());
             error = "网络连接异常";
         } else if (e instanceof IllegalArgumentException) {
-            LogUtils.loge("非法的参数异常: " + e.getMessage());
+            LogUtils.e("非法的参数异常: " + e.getMessage());
             error = "非法的参数异常";
         } else {//未知错误
             try {
-                LogUtils.loge("错误: " + e.getMessage());
+                LogUtils.e("错误: " + e.getMessage());
             } catch (Exception e1) {
-                LogUtils.loge("未知错误Debug调试 ");
+                LogUtils.e("未知错误Debug调试 ");
             }
             error = "错误";
         }
@@ -102,8 +102,8 @@ public class ExceptionHelper {
     }
 
     public static String handleException(Throwable e, String className, String url) {
-        LogUtils.loge("className: " + className);
-        LogUtils.loge("url: " + url);
+        LogUtils.e("className: " + className);
+        LogUtils.e("url: " + url);
         return handleException(e);
     }
 }

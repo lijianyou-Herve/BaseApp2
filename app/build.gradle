@@ -2,14 +2,19 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'org.greenrobot.greendao'//GreenDao
 
+def config = rootProject.ext.ver
+def library = rootProject.ext.library
+
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion config.compileSdkVersion
     defaultConfig {
         applicationId "comte.example.herve.baseapp"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [
@@ -29,6 +34,21 @@ android {
             targetCompatibility JavaVersion.VERSION_1_8
         }
     }
+    // AS3.0 自定义APK安装包名
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "BaseLibrary-v${variant.versionName}-${releaseTime()}-${variant.buildType.name}.apk"
+        }
+    }
+
+//    signingConfigs {
+//        release {
+//            storeFile file(rootProject.ext.keystorePath)
+//            storePassword rootProject.ext.keystorePassword
+//            keyAlias rootProject.ext.alias
+//            keyPassword rootProject.ext.aliasPassword
+//        }
+//    }
 
     buildTypes {
         release {
@@ -42,27 +62,37 @@ android {
     }
 }
 
+def static releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getDefault())
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    /*google布局控件*/
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    implementation 'com.google.android.material:material:1.0.0'
-    /*ButterKnife*/
-    implementation "com.jakewharton:butterknife:${versions.buter_kinfe}"
-    annotationProcessor "com.jakewharton:butterknife-compiler:${versions.buter_kinfe}"
-    /*Json解析工具*/
-    implementation "com.alibaba:fastjson:${versions.fast_json}.android"
 
-    implementation 'com.uber.autodispose:autodispose:1.1.0'
-    implementation 'com.uber.autodispose:autodispose-android-archcomponents:1.1.0'
+    //AndroidX Google支持库
+    api library.appcompat
+    api library.material
+    api library.constraint
+
+    api library.butterknife
+    annotationProcessor library.butterknife_compiler
+//    If you are using Kotlin, replace annotationProcessor with kapt.
+
+    /*Json解析工具*/
+    api library.gson
+
+    /*生命周期绑定*/
+    implementation library.autodispose
+    implementation library.autodispose_archcomponents
+
     /*内存泄漏检测工具leakcanary*/
     //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     //    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+
     testImplementation 'junit:junit:4.12'
     implementation project(':orm_library')
     implementation project(':common_library')

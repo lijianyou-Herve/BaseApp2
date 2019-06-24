@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorPrimary">#1E6D9B</color>
+    <color name="colorPrimaryDark">#1E6D9B</color>
+    <color name="colorAccent">#60a5fe</color>
 
     <!--other-->
     <color name="darkBackGround">#181617</color>
     <color name="darkEdit">#3d3b3c</color>
-
 
     <!--other-->
     <color name="template_green">#212021</color>
@@ -23,4 +26,5 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
 </resources>

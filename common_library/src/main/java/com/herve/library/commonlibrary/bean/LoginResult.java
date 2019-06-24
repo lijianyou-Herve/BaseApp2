@@ -5,5 +5,5 @@ package com.herve.library.commonlibrary.bean;
  *
  * @author Lijianyou
  */
-public class LoginBean {
+public class LoginResult extends Result<LoginResult>{
 }

@@ -1,11 +1,14 @@
 apply plugin: 'com.android.library'
 
+def config = rootProject.ext.ver
+def library = rootProject.ext.library
+
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion config.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -24,21 +27,26 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+//    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+//    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
     //
     implementation project(':common_library')
+
     //retrofit
-    api 'com.squareup.retrofit2:retrofit:2.5.0'
-    //Gson converter
-    api 'com.squareup.retrofit2:converter-gson:2.4.0'
-    api 'com.squareup.retrofit2:converter-simplexml:2.5.0'
-    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
-    //RxJava2 Adapter
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    api library.retrofit2
+    api library.retrofit2_gson//
+    api library.retrofit2_adapter//Adapter
+
     //okhttp
-    api 'com.squareup.okhttp3:okhttp:3.12.0'
-    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    api library.okhttp
+    api library.okhttp_logging
+    api library.retrofit2_scalars
+
+//    //Gson converter
+//    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+//    api 'com.squareup.retrofit2:converter-simplexml:2.5.0'
+//    //RxJava2 Adapter
+//    api 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 }

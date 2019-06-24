@@ -24,7 +24,7 @@ public class WorkPresenter extends MvpBasePresenter<WorkContract.PresenterView> 
 
     @Override
     public void loading() {
-        mPresenterView.showDialog();
+        mPresenterView.showProgressDialog();
     }
 
     @Override

@@ -1,0 +1,121 @@
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+ext {
+
+    ver = [
+            //Version
+            versionCode          : 1,
+            versionName          : "1.0",
+
+            //SDK And Tools
+            minSdkVersion        : 21,
+            targetSdkVersion     : 28,
+            compileSdkVersion    : 28,
+
+            //Dependencies
+            supportLibraryVersion: '27.1.1',
+            multidex             : '1.0.2',
+
+            //libraryVersion
+            log                  : '2.2.0',//无混淆
+            rxjava2              : '2.2.10',
+            rxandroid            : '2.1.1',
+            rxlifecycle2         : '2.2.1',
+            SmartRefreshLayout   : '1.0.5.1',//无需混淆
+            BRVH                 : '2.9.34',
+            butterknife          : '10.1.0',
+            retrofit2            : '2.6.0',
+            okio                 : '1.14.0',
+            okhttp               : '3.14.2',
+            gson                 : '2.8.5',
+            glide                : '4.9.0',//Glide图片加载版本
+            autosize             : '1.1.2',
+            greendao             : '3.2.2',
+            autodispose          : '1.3.0',
+            rxpermissions2       : '0.10.2',
+    ]
+
+    library = [
+            //拆包，方法数超量
+            multidex                     : "com.android.support:multidex:$ver.multidex",
+            /*google布局控件*/
+            appcompat                    : 'androidx.appcompat:appcompat:1.0.2',
+            constraint                   : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            material                     : 'com.google.android.material:material:1.0.0',
+            //生命周期工具
+            //https://github.com/uber/AutoDispose
+            autodispose                  : "com.uber.autodispose:autodispose:$ver.autodispose",
+            autodispose_archcomponents   : "com.uber.autodispose:autodispose-android-archcomponents:$ver.autodispose",
+            //数据库工具
+            greendao                     : "org.greenrobot:greendao:$ver.greendao",
+            //日志打印
+            logger                       : "com.orhanobut:logger:$ver.log",
+            //RxJava
+            //https://github.com/ReactiveX/RxAndroid
+            rxjava2                      : "io.reactivex.rxjava2:rxjava:$ver.rxjava2",
+            rxandroid                    : "io.reactivex.rxjava2:rxandroid:$ver.rxandroid",
+            //RxJava权限管理
+            //https://github.com/tbruyelle/RxPermissions
+            rxpermissions2               : "com.github.tbruyelle:rxpermissions:$ver.rxpermissions2",
+            rxlifecycle2_components      : "com.trello.rxlifecycle2:rxlifecycle-components:$ver.rxlifecycle2",
+            //刷新控件
+            SmartRefreshLayout           : "com.scwang.smartrefresh:SmartRefreshLayout:$ver.SmartRefreshLayout",//刷新库
+            BaseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:$ver.BRVH",
+            //控件绑定id
+            //https://github.com/JakeWharton/butterknife
+            butterknife                  : "com.jakewharton:butterknife:$ver.butterknife",
+            butterknife_compiler         : "com.jakewharton:butterknife-compiler:$ver.butterknife",
+            //网络请求相关
+            okio                         : "com.squareup.okio:okio:$ver.okio",
+            //https://github.com/square/okhttp
+            okhttp                       : "com.squareup.okhttp3:okhttp:$ver.okhttp",
+            okhttp_logging               : "com.squareup.okhttp3:logging-interceptor:$ver.okhttp",
+            //retrofit2网络请求相关
+            //https://github.com/square/retrofit
+            retrofit2                    : "com.squareup.retrofit2:retrofit:$ver.retrofit2",
+            retrofit2_gson               : "com.squareup.retrofit2:converter-gson:$ver.retrofit2",
+            retrofit2_adapter            : "com.squareup.retrofit2:adapter-rxjava2:$ver.retrofit2",
+            retrofit2_scalars            : "com.squareup.retrofit2:converter-scalars:$ver.retrofit2",
+            //https://github.com/google/gson
+            gson                         : "com.google.code.gson:gson:$ver.gson",
+            //https://github.com/bumptech/glide
+            glide                        : "com.github.bumptech.glide:glide:$ver.glide",
+            glide_compiler               : "com.github.bumptech.glide:compiler:$ver.glide",
+            glideTransformation          : "jp.wasabeef:glide-transformations:3.3.0",
+            //https://github.com/JessYanCoding/AndroidAutoSize
+            autosize                     : "me.jessyan:autosize:$ver.autosize",//屏幕适配
+            //flexbox                      : 'com.google.android:flexbox:1.0.0',//flexbox
+            stickynestedscrollview       : 'com.github.didikk:sticky-nestedscrollview:1.0.1',//粘性头部
+            indexablestickylistview      : "me.yokeyword:indexablestickylistview:0.6.10",
+            TabLayout                    : 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar',
+            androideventbus              : "org.simple:androideventbus:1.0.5.1",//EventBus
+            roundedimageview             : 'com.makeramen:roundedimageview:2.3.0',//圆角图片
+            circleimageview              : 'de.hdodenhof:circleimageview:2.2.0',//圆形图片
+            ImagePicker                  : 'com.mirkowu:ImagePicker:0.0.7',//图片选择
+            ImageWatcher                 : 'com.github.iielse:ImageWatcher:1.1.5',//仿微信图片查看器
+            ShortcutBadger               : 'me.leolin:ShortcutBadger:1.1.19@aar',//角标
+            BaseToolbar                  : 'com.mirkowu:BaseToolbar:0.1.0',//导航栏
+            StatusBarUtil                : 'com.mirkowu:StatusBarUtil:0.0.6',//状态栏
+            PickerView                   : 'com.contrarywind:Android-PickerView:4.1.6',//滚轮挑选器
+            BasePopup                    : 'com.github.razerdp:BasePopup:2.1.4',//PopupWindow
+            Banner                       : 'com.youth.banner:banner:1.4.10',//banner
+            NewbieGuide                  : 'com.github.huburt-Hu:NewbieGuide:v2.4.0',//蒙层引导
+            pageindicatorview            : 'com.romandanylyk:pageindicatorview:1.0.3',//圆点指示器
+            //高德地图
+            //amap                         : 'com.amap.api:location:latest.integration',
+            //ezviz                        : "com.hikvision.ezviz:ezviz-sdk:4.7.1",
+            //jpush                        : "cn.jiguang.sdk:jpush:3.0.9",
+            //jcore                        : "cn.jiguang.sdk:jcore:1.1.7",
+    ]
+
+    //keystore
+    keystorePath = rootDir.toString() + '\\baselirary.jks'
+//    keystorePassword = properties.getProperty("keystorePassword")
+//    alias = properties.getProperty("alias")
+//    aliasPassword = properties.getProperty("aliasPassword")
+
+    keystorePassword = '123456'
+    alias = 'mirkowu'
+    aliasPassword = '123456'
+}

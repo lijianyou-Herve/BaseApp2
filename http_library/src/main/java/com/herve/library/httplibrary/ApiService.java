@@ -1,7 +1,7 @@
 package com.herve.library.httplibrary;
 
 
-import com.herve.library.commonlibrary.bean.LoginBean;
+import com.herve.library.commonlibrary.bean.LoginResult;
 
 import java.util.Map;
 
@@ -21,5 +21,5 @@ public interface ApiService {
     //验证验证码
     @FormUrlEncoded
     @POST
-    Observable<LoginBean> login(@Url String path, @FieldMap Map<String, String> paramsMap);
+    Observable<LoginResult> login(@Url String path, @FieldMap Map<String, String> paramsMap);
 }

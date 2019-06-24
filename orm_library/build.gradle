@@ -1,12 +1,16 @@
 apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao'//GreenDao
 
+
+def config = rootProject.ext.ver
+def library = rootProject.ext.library
+
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion config.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -30,13 +34,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
-
     /*GreenDAO数据库------------依据博客地址：[http://www.jianshu.com/p/853401a7d02b]*/
-    api "org.greenrobot:greendao:${versions.greendao}"
-
+    api library.greendao
 }

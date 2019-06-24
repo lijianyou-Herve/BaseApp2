@@ -1,6 +1,7 @@
 package com.herve.library.commonlibrary.utils;
 
-import com.orhanobut.logger.LogLevel;
+import android.util.Log;
+
 import com.orhanobut.logger.Logger;
 
 /**
@@ -8,114 +9,73 @@ import com.orhanobut.logger.Logger;
  * 使用logger封装
  */
 public class LogUtils {
-    /**
-     * The constant DEBUG_TAG.
-     */
-    public static final String DEBUG_TAG = "logger";// LogCat的标记
-    public static final String NET_WORK_DEBUG_TAG = "RequestFatory";// LogCat的标记
+  public static boolean isDebug = true;//是否Debug 控制打印
+  public static final String NET_WORK_DEBUG_TAG = "RequestFatory";// LogCat的标记
 
-    public static boolean DEBUG_ENABLE = false;// 是否调试模式
+  /**
+   * Logger 工具打印
+   */
+  public static void d(String msg) {
+    if (isDebug) Logger.d(msg);
+  }
 
-    /**
-     * 在application调用初始化
-     */
-    public static void logInit(boolean debug) {
-        DEBUG_ENABLE = debug;
-        UtilLog.DEBUGGER = debug;
-        if (DEBUG_ENABLE) {
-            Logger.init(DEBUG_TAG)                 // default PRETTYLOGGER or use just init()
-                    .methodCount(2)                 // default 2
-                    .logLevel(LogLevel.FULL)        // default LogLevel.FULL
-                    .methodOffset(0);                // default 0
-        } else {
-            Logger.init()                 // default PRETTYLOGGER or use just init()
-                    .methodCount(3)                 // default 2
-                    .hideThreadInfo()               // default shown
-                    .logLevel(LogLevel.NONE)        // default LogLevel.FULL
-                    .methodOffset(2);
-        }
+  public static void i(String msg) {
+    if (isDebug) Logger.i(msg);
+  }
+
+  public static void v(String msg) {
+    if (isDebug) Logger.v(msg);
+  }
+
+  public static void w(String msg) {
+    if (isDebug) Logger.w(msg);
+  }
+
+  public static void e(String msg) {
+    if (isDebug) Logger.e(msg);
+  }
+
+  public static void json(String json) {
+    if (isDebug) Logger.json(json);
+  }
+
+  public static void xml(String xml) {
+    if (isDebug) Logger.xml(xml);
+  }
+
+
+  /**
+   * 以下是系统自带的
+   * 打印简单的log
+   */
+  public static void e(String tag, String msg) {
+    if (isDebug) Log.e(tag, msg);
+  }
+
+  public static void w(String tag, String msg) {
+    if (isDebug) Log.w(tag, msg);
+  }
+
+  public static void d(String tag, String msg) {
+    if (isDebug) Log.d(tag, msg);
+  }
+
+  public static void i(String tag, String msg) {
+    if (isDebug) Log.i(tag, msg);
+  }
+
+  public static void v(String tag, String msg) {
+    if (isDebug) Log.v(tag, msg);
+  }
+
+  /**
+   * 网络请求的参数
+   *
+   * @param message
+   */
+  public static void logNetResponse(String message) {
+    if (isDebug) {
+      Logger.i(NET_WORK_DEBUG_TAG + " message = " + message);
     }
-
-    public static void logd(String tag, String message) {
-        if (DEBUG_ENABLE) {
-//            Logger.d(tag, message);
-            UtilLog.log(tag, message);
-        }
-    }
-
-    public static void logd(String message) {
-        if (DEBUG_ENABLE) {
-//            Logger.d(message);
-            UtilLog.log(DEBUG_TAG, message);
-        }
-    }
-
-    public static void logNetResponse(String message) {
-        if (DEBUG_ENABLE) {
-            UtilLog.log(NET_WORK_DEBUG_TAG, message);
-        }
-    }
-
-    public static void loge(Throwable throwable, String message, Object... args) {
-        if (DEBUG_ENABLE) {
-            Logger.e(throwable, message, args);
-        }
-    }
-
-    public static void loge(String message) {
-        if (DEBUG_ENABLE) {
-//            Logger.e(message, args);
-            UtilLog.error(DEBUG_TAG, message);
-        }
-    }
-
-    public static void loge(String tag, String message) {
-        if (DEBUG_ENABLE) {
-//            Logger.e(message, args);
-            UtilLog.error(tag, message);
-        }
-    }
-
-    public static void loge(String message, Object... args) {
-        if (DEBUG_ENABLE) {
-//            Logger.e(message, args);
-            UtilLog.error(DEBUG_TAG, message);
-        }
-    }
-
-    public static void logi(String message, Object... args) {
-        if (DEBUG_ENABLE) {
-            Logger.i(message, args);
-        }
-    }
-
-    public static void logv(String message, Object... args) {
-        if (DEBUG_ENABLE) {
-            Logger.v(message, args);
-        }
-    }
-
-    public static void logw(String message, Object... args) {
-        if (DEBUG_ENABLE) {
-            Logger.v(message, args);
-        }
-    }
-
-    public static void logwtf(String message, Object... args) {
-        if (DEBUG_ENABLE) {
-            Logger.wtf(message, args);
-        }
-    }
-
-    public static void logjson(String message) {
-        if (DEBUG_ENABLE) {
-            Logger.json(message);
-        }
-    }
-
-    public static void logxml(String message) {
-        if (DEBUG_ENABLE) {
-            Logger.xml(message);
-        }
-    }
+  }
 }

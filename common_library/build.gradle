@@ -1,11 +1,14 @@
 apply plugin: 'com.android.library'
 
+def config = rootProject.ext.ver
+def library = rootProject.ext.library
+
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion config.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -23,18 +26,47 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+    //Android支持库
+    api library.appcompat
+    api library.material
+//    api library.constraint
 
+    //RxJava2+Retrofit2 网络框架
+    api library.okio
+    api library.okhttp
+    api library.okhttp_logging
+    api library.retrofit2
+    api library.gson
+    api library.retrofit2_gson
+    api library.retrofit2_adapter
+    api library.rxjava2
+    api library.rxlifecycle2_components
+
+    //屏幕适配
+    api library.autosize
+
+    //常用工具库
+    api library.circleimageview
+    api library.roundedimageview
+    api library.BaseRecyclerViewAdapterHelper
+    api library.SmartRefreshLayout
+    api library.rxpermissions2
+    api library.logger
+    api library.BaseToolbar
+    api library.StatusBarUtil
+    api library.glide
+    api library.glideTransformation
+
+    api library.butterknife
+    //annotationProcessor library.butterknife_compiler
+//    If you are using Kotlin, replace annotationProcessor with kapt.
+
+    //内存泄漏检测
+    debugApi 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     //Log
-    api 'com.orhanobut:logger:1.15'
-
-    /*RxJava*/
-    /*==Rxjava end==*/
-    api "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
-    api "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
+    api 'com.orhanobut:logger:2.2.0'
 }

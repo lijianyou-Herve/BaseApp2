@@ -7,7 +7,9 @@ package comte.example.herve.baseapp.base.presenter;
 
 public interface BasePresenterView {
 
-    void showDialog();
+  void showProgressDialog();
 
-    void dismissDialog();
+  void showProgressDialog(CharSequence message);
+
+  void dismissProgressDialog();
 }

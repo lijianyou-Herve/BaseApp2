@@ -2,7 +2,7 @@ package com.herve.library.httplibrary;
 
 
 import com.google.gson.Gson;
-import com.herve.library.commonlibrary.bean.BaseCodeBean;
+import com.herve.library.commonlibrary.bean.Result;
 import com.herve.library.commonlibrary.utils.LogUtils;
 
 import java.io.IOException;
@@ -136,7 +136,7 @@ public class BaseApiImpl implements BaseApi {
                     }
                 }
             }
-            LogUtils.logNetResponse("请求参数--------------");
+            LogUtils.i("请求参数--------------");
             //新的url
             HttpUrl httpUrl = builder.build();
             Request request = originalRequest.newBuilder()
@@ -229,7 +229,7 @@ public class BaseApiImpl implements BaseApi {
         source.request(Long.MAX_VALUE); // Buffer the entire body.
         Buffer buffer = source.buffer();
         if (charset != null) {
-            BaseCodeBean baseBean = new Gson().fromJson(buffer.clone().readString(charset), BaseCodeBean.class);
+            Result baseBean = new Gson().fromJson(buffer.clone().readString(charset), Result.class);
             if (baseBean.getCode() == ApiException.TOKEN_ERROR) {
                 throw new ApiException(ApiException.TOKEN_ERROR, url + " token error");
             }

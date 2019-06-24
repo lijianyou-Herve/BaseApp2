@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">BaseApp</string>
 
-    <string name="tab_home1">Tab01</string>
-    <string name="tab_home2">Tab02</string>
-    <string name="tab_home3">Tab03</string>
+    <string name="tab_home1">页面01</string>
+    <string name="tab_home2">页面02</string>
+    <string name="tab_home3">页面03</string>
+    <string name="meet">遇见</string>
+    <string name="square">广场</string>
+    <string name="message">消息</string>
+    <string name="mine">我的</string>
 </resources>

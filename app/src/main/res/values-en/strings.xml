@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BaseApp</string>
+
+    <string name="tab_home1">Tab01</string>
+    <string name="tab_home2">Tab02</string>
+    <string name="tab_home3">Tab03</string>
+    <string name="meet">meet</string>
+    <string name="square">square</string>
+    <string name="message">message</string>
+    <string name="mine">mine</string>
+</resources>
