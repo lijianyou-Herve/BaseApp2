@@ -1,14 +1,12 @@
 package com.herve.library.commonlibrary;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
 import com.herve.library.commonlibrary.bean.Result;
 import com.herve.library.commonlibrary.config.Config;
 import com.herve.library.commonlibrary.utils.ActivityManager;
-import com.herve.library.commonlibrary.utils.LogUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -22,9 +20,10 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.tiange.thrid_sdk_library.ThridApplication;
 
 
-public class BaseApplication extends Application {
+public class BaseApplication extends ThridApplication {
 
   private static BaseApplication instance;
 

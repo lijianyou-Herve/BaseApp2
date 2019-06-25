@@ -227,7 +227,7 @@ public class BaseApiImpl implements BaseApi {
         }
 
         source.request(Long.MAX_VALUE); // Buffer the entire body.
-        Buffer buffer = source.buffer();
+        Buffer buffer = source.getBuffer();
         if (charset != null) {
             Result baseBean = new Gson().fromJson(buffer.clone().readString(charset), Result.class);
             if (baseBean.getCode() == ApiException.TOKEN_ERROR) {

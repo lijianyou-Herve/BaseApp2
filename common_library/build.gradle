@@ -13,7 +13,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -33,6 +32,13 @@ dependencies {
     api library.appcompat
     api library.material
 //    api library.constraint
+
+    /*Json解析工具*/
+    api library.gson
+
+    /*生命周期绑定*/
+    api library.autodispose
+    api library.autodispose_archcomponents
 
     //RxJava2+Retrofit2 网络框架
     api library.okio
@@ -61,6 +67,7 @@ dependencies {
     api library.glideTransformation
 
     api library.butterknife
+
     //annotationProcessor library.butterknife_compiler
 //    If you are using Kotlin, replace annotationProcessor with kapt.
 
@@ -69,4 +76,6 @@ dependencies {
     releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     //Log
     api 'com.orhanobut:logger:2.2.0'
+
+    api project(path: ':thrid_sdk_library')
 }

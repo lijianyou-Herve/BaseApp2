@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+def config = rootProject.ext.ver
+def library = rootProject.ext.library
+
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //极光推送
+    api library.jpush
+    api library.jcore
+
+    //网易云信
+    api library.nimlib_basesdk
+    api library.nimlib_nrtc
+    api library.nimlib_avchat
+    api library.nimlib_chatroom
+    api library.nimlib_rts
+    api library.nimlib_lucene
+
+    //友盟统计
+    api library.umeng_analytics
+    api library.umeng_common
+
+}
