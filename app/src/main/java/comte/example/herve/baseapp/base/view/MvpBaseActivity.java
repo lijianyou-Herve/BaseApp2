@@ -30,8 +30,10 @@ public abstract class MvpBaseActivity<P extends BasePresenter> extends BaseActiv
   protected void baseActivityCreate() {
     super.baseActivityCreate();
     mPresenter = initPresenter();
-    mPresenter.setLifecycleOwner(this);
-    getLifecycle().addObserver(mPresenter);
+    if (mPresenter != null) {
+      mPresenter.setLifecycleOwner(this);
+      getLifecycle().addObserver(mPresenter);
+    }
   }
 
   @CallSuper

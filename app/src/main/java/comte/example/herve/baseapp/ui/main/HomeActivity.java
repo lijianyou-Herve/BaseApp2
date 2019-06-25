@@ -9,10 +9,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.herve.library.commonlibrary.utils.BaseSPManager;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import butterknife.BindView;
 import comte.example.herve.baseapp.R;
@@ -22,6 +20,7 @@ import comte.example.herve.baseapp.ui.main.Fragments.life.LifeFragment;
 import comte.example.herve.baseapp.ui.main.adapter.FragmentsAdapter;
 import comte.example.herve.baseapp.ui.main.presenter.MainConstant;
 import comte.example.herve.baseapp.ui.main.presenter.MainPresenter;
+import comte.example.herve.baseapp.ui.webView.WebViewActivity;
 
 public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implements MainConstant.PresenterView {
 
@@ -62,16 +61,15 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
             Log.i(TAG, "onNavigationItemSelected:getOrder= " + item.getOrder());
             switch (item.getItemId()) {
               case R.id.tab_01:
-                //切换日夜模式
-                BaseSPManager.setNightMode(!BaseSPManager.isNightMode());
+
                 vpHome.setCurrentItem(0);
+                SimpleToolbarActivity.launch(mActivity);
                 break;
               case R.id.tab_02:
-                changeLanguage(Locale.ENGLISH);
+                WebViewActivity.launch(mActivity, "网页", "http://www.baidu.com");
                 vpHome.setCurrentItem(1);
                 break;
               case R.id.tab_03:
-                changeLanguage(Locale.SIMPLIFIED_CHINESE);
                 vpHome.setCurrentItem(2);
                 break;
               default:
@@ -79,11 +77,9 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
                     "onNavigationItemSelected: you have not get the MenuItem id");
                 break;
             }
-            reload();
             return false;
           }
         });
-
   }
 
   @Override

@@ -68,14 +68,11 @@ abstract class BaseActivity extends AppCompatActivity implements ImplDelegate, B
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
+    mActivity = this;
     //设置委托
     final BaseDelegate delegate = getBaseDelegate();
     delegate.onCreate(savedInstanceState);
-
-    setContentView(initLayoutId());
-    mUnBinder = ButterKnife.bind(this);
-    mActivity = this;
+    bindView();
     baseActivityCreate();
 
     initView();
@@ -83,6 +80,11 @@ abstract class BaseActivity extends AppCompatActivity implements ImplDelegate, B
     initData();
 
     initListener();
+  }
+
+  protected void bindView() {
+    setContentView(initLayoutId());
+    mUnBinder = ButterKnife.bind(this);//ButterKnife
   }
 
   /**
@@ -163,6 +165,7 @@ abstract class BaseActivity extends AppCompatActivity implements ImplDelegate, B
   protected void onDestroy() {
     if (mUnBinder != null) mUnBinder.unbind();
     super.onDestroy();
+    getBaseDelegate().clearLoading();
   }
 
   @Override
@@ -177,7 +180,7 @@ abstract class BaseActivity extends AppCompatActivity implements ImplDelegate, B
 
   @Override
   public boolean isEqualsLanguage(Locale mLanguage, Locale locale) {
-    return false;
+    return getBaseDelegate().isEqualsLanguage(mLanguage, locale);
   }
 
   @Override

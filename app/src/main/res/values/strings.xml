@@ -8,4 +8,7 @@
     <string name="square">广场</string>
     <string name="message">消息</string>
     <string name="mine">我的</string>
+    <string name="change_mode">日夜模式切换</string>
+    <string name="change_language">中英文字切换</string>
+    <string name="setting_tittle">标题页面</string>
 </resources>

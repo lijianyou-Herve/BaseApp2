@@ -78,7 +78,7 @@ public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> 
       @Override
       public void subscribe(ObservableEmitter<Long> emitter) {
         try {
-          Thread.sleep(5000);
+          Thread.sleep(1000);
         } catch (InterruptedException e) {
           e.printStackTrace();
           if (!emitter.isDisposed()) {

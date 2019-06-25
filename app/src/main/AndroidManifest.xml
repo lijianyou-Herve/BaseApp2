@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="comte.example.herve.baseapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -18,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.main.SimpleToolbarActivity" />
+        <activity android:name=".ui.webView.WebViewActivity" />
     </application>
 
 </manifest>

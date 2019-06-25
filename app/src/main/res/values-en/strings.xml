@@ -8,4 +8,7 @@
     <string name="square">square</string>
     <string name="message">message</string>
     <string name="mine">mine</string>
+    <string name="change_mode">Change Mode</string>
+    <string name="change_language">Change Language</string>
+    <string name="setting_tittle">setting</string>
 </resources>
