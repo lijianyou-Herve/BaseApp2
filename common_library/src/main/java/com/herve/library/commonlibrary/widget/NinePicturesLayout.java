@@ -121,7 +121,7 @@ public class NinePicturesLayout extends FrameLayout implements View.OnClickListe
                 iPicture.setLayoutParams(lpChildImage);
                 iPicture.setBackgroundResource(R.drawable.loading);
 
-                loadPictures( iPicture,thumbList.get(i));
+                loadPictures(iPicture, thumbList.get(i));
 
                 iPicture.setTranslationX((i % column) * (imageSize + mSpace));
                 iPicture.setTranslationY((i / column) * (imageSize + mSpace));
@@ -139,6 +139,7 @@ public class NinePicturesLayout extends FrameLayout implements View.OnClickListe
 
     /**
      * 加载图片 ，需要重写
+     *
      * @param iPicture
      * @param uri
      */
@@ -155,7 +156,7 @@ public class NinePicturesLayout extends FrameLayout implements View.OnClickListe
 
     public interface Callback {
         void onThumbPictureClick(ImageView i,
-            SparseArray<ImageView> imageGroupList, List<Uri> urlList);
+                SparseArray<ImageView> imageGroupList, List<Uri> urlList);
     }
 
     public void setCallback(Callback callback) {

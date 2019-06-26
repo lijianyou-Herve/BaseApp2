@@ -1,8 +1,8 @@
 package com.example.herve.baseapp.ui.main.presenter;
 
 
-import com.example.herve.baseapp.base.presenter.BasePresenter;
-import com.example.herve.baseapp.base.presenter.BasePresenterView;
+import com.herve.library.commonlibrary.base.presenter.BasePresenter;
+import com.herve.library.commonlibrary.base.presenter.BasePresenterView;
 
 /**
  * Created           :Herve on 2016/10/23.
@@ -25,7 +25,7 @@ public interface MainConstant {
 
     interface PresenterView extends BasePresenterView {
 
-        void getDate();
+        void requestSuccess();
 
     }
 }

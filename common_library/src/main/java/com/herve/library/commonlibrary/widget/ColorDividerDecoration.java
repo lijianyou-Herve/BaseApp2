@@ -21,7 +21,7 @@ public class ColorDividerDecoration extends RecyclerView.ItemDecoration {
     public static final int MIDDLE = 1;
     public static final int MIDDLE_END = 2;
 
-   // private Context mContext;
+    // private Context mContext;
     /**
      * 画笔
      */
@@ -43,9 +43,9 @@ public class ColorDividerDecoration extends RecyclerView.ItemDecoration {
      */
     private int mShowDividers;
 
-//    private int mPadding;//
-//    private int mLeftPadding;//
-//    private int mRightPadding;//
+    //    private int mPadding;//
+    //    private int mLeftPadding;//
+    //    private int mRightPadding;//
 
 
     public ColorDividerDecoration(@ColorInt int mDividerColor) {

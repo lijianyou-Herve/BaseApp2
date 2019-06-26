@@ -28,7 +28,7 @@ public class AESUtil {
      * 公钥加密
      *
      * @param contentStr
-     * @param key  得到的公钥
+     * @param key        得到的公钥
      * @param iv
      * @return 已被Base64加密过的字符串
      */
@@ -89,7 +89,7 @@ public class AESUtil {
 
     public static byte[] encrypt(byte[] content, byte[] keyBytes, byte[] iv) {
         try {
-//            byte[] raw = getRawKey(keyBytes);
+            //            byte[] raw = getRawKey(keyBytes);
             SecretKeySpec key = new SecretKeySpec(keyBytes, "AES");
 
             Cipher cipher = Cipher.getInstance(CipherMode);
@@ -104,8 +104,8 @@ public class AESUtil {
 
     public static byte[] decrypt(byte[] content, byte[] keyBytes, byte[] iv) {
         try {
-//            byte[] raw = getRawKey(keyBytes);
-//            SecretKeySpec key = new SecretKeySpec(raw, "AES");
+            //            byte[] raw = getRawKey(keyBytes);
+            //            SecretKeySpec key = new SecretKeySpec(raw, "AES");
 
             SecretKeySpec key = new SecretKeySpec(keyBytes, "AES");
 
@@ -222,26 +222,26 @@ public class AESUtil {
     }
 
 
-//    public static void main(String[] args) throws UnsupportedEncodingException {
-//        String IV = "1750654920105581";
-//        String API_ENCRYPT_KEY = "1467f4699214cec412f7c2a1d513fe08";
-//        String data = "b+W8eZv9suf1DgHEzeny5DtAPrd4L5dBHHL+0YF85ey2W\\/oFX9sBVD3azJkOP\\/M0BXUJu7f0eiQLi2oIbz56LOC1Pto1qVx3dgg\\/agidWTU=";
-//        System.out.println(data);
-//        System.out.println(data.getBytes("UTF-8"));
-//        try {
-//
-//            String key = MD5Util.ToMD5NOKey("1522220376" + API_ENCRYPT_KEY + "e879ada9061d176a498812c62770b9c3");
-//            // byte[] en = encrypt(data.getBytes("UTF-8"), API_ENCRYPT_KEY.getBytes("UTF-8"), IV.getBytes("UTF-8"));
-//            System.out.println("key==" + key);
-//            byte[] bytes = java.util.Base64.getDecoder().decode(data);
-//            System.out.println("解密后数据==" + new String(decrypt(bytes, key.getBytes("UTF-8"), IV.getBytes("UTF-8")), "UTF-8"));
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//    }
+    //    public static void main(String[] args) throws UnsupportedEncodingException {
+    //        String IV = "1750654920105581";
+    //        String API_ENCRYPT_KEY = "1467f4699214cec412f7c2a1d513fe08";
+    //        String data = "b+W8eZv9suf1DgHEzeny5DtAPrd4L5dBHHL+0YF85ey2W\\/oFX9sBVD3azJkOP\\/M0BXUJu7f0eiQLi2oIbz56LOC1Pto1qVx3dgg\\/agidWTU=";
+    //        System.out.println(data);
+    //        System.out.println(data.getBytes("UTF-8"));
+    //        try {
+    //
+    //            String key = MD5Util.ToMD5NOKey("1522220376" + API_ENCRYPT_KEY + "e879ada9061d176a498812c62770b9c3");
+    //            // byte[] en = encrypt(data.getBytes("UTF-8"), API_ENCRYPT_KEY.getBytes("UTF-8"), IV.getBytes("UTF-8"));
+    //            System.out.println("key==" + key);
+    //            byte[] bytes = java.util.Base64.getDecoder().decode(data);
+    //            System.out.println("解密后数据==" + new String(decrypt(bytes, key.getBytes("UTF-8"), IV.getBytes("UTF-8")), "UTF-8"));
+    //
+    //        } catch (Exception e) {
+    //            e.printStackTrace();
+    //        }
+    //
+    //
+    //    }
 
     public static class CryptoProvider extends Provider {
         /**

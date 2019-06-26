@@ -1,9 +1,9 @@
 package com.herve.library.httplibrary;
 
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
-import com.herve.library.commonlibrary.bean.Result;
-import com.herve.library.commonlibrary.utils.LogUtils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.NonNull;
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -41,8 +40,8 @@ public class BaseApiImpl implements BaseApi {
         //缓存
         httpBuilder.readTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
-//                .addNetworkInterceptor();
-//                .cache()
+                //                .addNetworkInterceptor();
+                //                .cache()
                 .addInterceptor(new CommonInterceptor())
                 .addInterceptor(new CreateInterceptor())
                 .addInterceptor(getLoggerInterceptor());
@@ -98,7 +97,7 @@ public class BaseApiImpl implements BaseApi {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(@NonNull String message) {
-                LogUtils.logNetResponse(message);
+                LogNet.logNetResponse(message);
             }
         });
         loggingInterceptor.setLevel(level);
@@ -121,22 +120,22 @@ public class BaseApiImpl implements BaseApi {
             Request originalRequest = chain.request();
             //重新构建url
             HttpUrl.Builder builder = originalRequest.url().newBuilder();
-            LogUtils.logNetResponse("请求参数--------------");
+            LogNet.logNetResponse("请求参数--------------");
             for (Map.Entry<String, String> entry : commomParamsMap.entrySet()) {
-                LogUtils.logNetResponse(entry.getKey() + " : " + entry.getValue());
+                LogNet.logNetResponse(entry.getKey() + " : " + entry.getValue());
                 builder.addQueryParameter(entry.getKey(), entry.getValue());
             }
             //如果是post请求的话就把参数重新拼接一下，get请求的话就可以直接加入公共参数了
             FormBody body = (FormBody) originalRequest.body();
             if (body != null) {
                 for (int i = 0; i < body.size(); i++) {
-                    LogUtils.logNetResponse(body.name(i) + " : " + body.value(i));
+                    LogNet.logNetResponse(body.name(i) + " : " + body.value(i));
                     if (originalRequest.method().equals("POST")) {
                         builder.addQueryParameter(body.name(i), body.value(i));
                     }
                 }
             }
-            LogUtils.i("请求参数--------------");
+            LogNet.i("请求参数--------------");
             //新的url
             HttpUrl httpUrl = builder.build();
             Request request = originalRequest.newBuilder()

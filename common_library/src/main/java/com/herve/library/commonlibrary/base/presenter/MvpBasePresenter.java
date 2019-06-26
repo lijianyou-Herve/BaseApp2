@@ -1,14 +1,12 @@
-package com.example.herve.baseapp.base.presenter;
+package com.herve.library.commonlibrary.base.presenter;
 
 import android.content.Context;
 
-import com.herve.library.commonlibrary.utils.lifecycler.RxLifecycleUtils;
-import com.uber.autodispose.AutoDisposeConverter;
-
-import org.greenrobot.greendao.annotation.NotNull;
-
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
+
+import com.herve.library.commonlibrary.utils.lifecycler.RxLifecycleUtils;
+import com.uber.autodispose.AutoDisposeConverter;
 
 /**
  * Created           :Herve on 2016/10/10.
@@ -19,16 +17,13 @@ import androidx.lifecycle.LifecycleOwner;
  * @ projectName     :SquareDemo
  * @ version
  */
-public abstract class MvpBasePresenter<V extends BasePresenterView> implements IPresenter {
+public class MvpBasePresenter<V extends BasePresenterView> implements BasePresenter {
 
     protected V mPresenterView;
     private LifecycleOwner lifecycleOwner;
 
     public MvpBasePresenter(V mPresenterView) {
         this.mPresenterView = mPresenterView;
-        if (!(mPresenterView instanceof Context)) {
-            throw new IllegalArgumentException("PresenterView must instanceof Context");
-        }
     }
 
     protected <T> AutoDisposeConverter<T> bindLifecycle(Lifecycle.Event untilEvent) {
@@ -44,8 +39,13 @@ public abstract class MvpBasePresenter<V extends BasePresenterView> implements I
     }
 
     @Override
-    public void onLifecycleChanged(LifecycleOwner owner, Lifecycle.Event event) {
+    public void showDialog() {
+        mPresenterView.showProgressDialog();
+    }
 
+    @Override
+    public void dismissDialog() {
+        mPresenterView.dismissProgressDialog();
     }
 
     @Override
@@ -53,33 +53,7 @@ public abstract class MvpBasePresenter<V extends BasePresenterView> implements I
         this.lifecycleOwner = lifecycleOwner;
     }
 
-    public void onCreate(@NotNull LifecycleOwner owner) {
-    }
-
-    @Override
-    public void onStart(LifecycleOwner owner) {
-    }
-
-    @Override
-    public void onResume(LifecycleOwner owner) {
-
-    }
-
-    @Override
-    public void onPause(LifecycleOwner owner) {
-
-    }
-
-    @Override
-    public void onStop(LifecycleOwner owner) {
-
-    }
-
-    public void onDestroy(@NotNull LifecycleOwner owner) {
-
-    }
-
     protected Context getContext() {
-        return (Context) mPresenterView;
+        return null;
     }
 }

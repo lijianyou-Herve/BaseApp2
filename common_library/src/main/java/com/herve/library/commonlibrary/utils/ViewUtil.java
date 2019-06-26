@@ -14,6 +14,7 @@ public class ViewUtil {
 
     /**
      * 显示密码
+     *
      * @param editText
      * @param show
      */

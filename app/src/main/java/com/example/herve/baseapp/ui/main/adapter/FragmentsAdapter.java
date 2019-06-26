@@ -2,15 +2,16 @@ package com.example.herve.baseapp.ui.main.adapter;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import com.example.herve.baseapp.base.view.BaseFragment;
+
 import com.example.herve.baseapp.ui.main.Fragments.life.LifeFragment;
 import com.example.herve.baseapp.ui.main.Fragments.work.WorkFragment;
+import com.herve.library.commonlibrary.base.view.BaseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created           :Herve on 2016/10/10.
@@ -63,7 +64,6 @@ public class FragmentsAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return data.get(position).getTittle();
     }
-
 
 
 }

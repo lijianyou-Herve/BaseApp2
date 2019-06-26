@@ -91,5 +91,4 @@ dependencies {
 
     api project(':orm_library')
     api project(':common_library')// 继承了(:thrid_sdk_library)
-    api project(':http_library')
 }

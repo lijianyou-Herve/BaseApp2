@@ -213,7 +213,7 @@ public class CompressUtil {
      * @param size           the file size of image
      */
     private File compress(String largeImagePath, String thumbFilePath, int width, int height,
-                          int angle, long size) throws IOException {
+            int angle, long size) throws IOException {
         Bitmap thbBitmap = compress(largeImagePath, width, height);
 
         thbBitmap = rotatingImage(angle, thbBitmap);

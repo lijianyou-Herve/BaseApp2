@@ -51,10 +51,10 @@ public class CheckUtil {
             return true;
         }
 
-//        if (!Pattern.matches("^[a-zA-Z0-9]{6,}$", str)) {
-//            ToastUtil.s(hint);
-//            return true;
-//        }
+        //        if (!Pattern.matches("^[a-zA-Z0-9]{6,}$", str)) {
+        //            ToastUtil.s(hint);
+        //            return true;
+        //        }
         //这里只判断了长度 任意字符都可以
         if (str.length() < 6 || str.contains(" ")) {
             ToastUtil.s(hint);

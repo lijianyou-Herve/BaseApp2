@@ -34,7 +34,7 @@ public class GridDivider extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-                               RecyclerView.State state) {
+            RecyclerView.State state) {
         int position = parent.getChildAdapterPosition(view); // item position
         int column = position % mSpanCount; // item column
 

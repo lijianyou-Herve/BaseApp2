@@ -41,11 +41,11 @@ public class ToastUtil {
 
     public static void show(CharSequence message, int duration) {
         //缓存一个Toast 这种方式体验感觉最好，Toast消失的计时会从最后一次show之后才开始计算，还可以通过setText设置不同的内容
-//
-//        if (mToast == null)
-//            mToast = Toast.makeText(BaseApplication.getInstance().getApplicationContext(),
-//                    message, duration);
-//        else mToast.setText(message);
+        //
+        //        if (mToast == null)
+        //            mToast = Toast.makeText(BaseApplication.getInstance().getApplicationContext(),
+        //                    message, duration);
+        //        else mToast.setText(message);
 
         Context context = BaseApplication.getInstance().getApplicationContext();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//8.0对Toast做了改动
@@ -80,9 +80,9 @@ public class ToastUtil {
      *
      * @param msgId
      */
-//    public static void s(@StringRes int msgId) {
-//        s(BaseApplication.getInstance().getApplicationContext().getResources().getString(msgId));
-//    }
+    //    public static void s(@StringRes int msgId) {
+    //        s(BaseApplication.getInstance().getApplicationContext().getResources().getString(msgId));
+    //    }
 
     /**
      * long Toast
@@ -99,7 +99,7 @@ public class ToastUtil {
      *
      * @param msgId
      */
-//    public static void l(@StringRes int msgId) {
-//        l(BaseApplication.getInstance().getApplicationContext().getResources().getString(msgId));
-//    }
+    //    public static void l(@StringRes int msgId) {
+    //        l(BaseApplication.getInstance().getApplicationContext().getResources().getString(msgId));
+    //    }
 }

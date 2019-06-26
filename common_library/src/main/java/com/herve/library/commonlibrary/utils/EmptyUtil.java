@@ -70,6 +70,7 @@ public class EmptyUtil {
     public static boolean isNotFloatZero(String numStr) {
         return !isFloatZero(numStr);
     }
+
     public static boolean isIntZero(String numStr) {
         if (numStr == null) return true;//为空时也当成0
         int n;

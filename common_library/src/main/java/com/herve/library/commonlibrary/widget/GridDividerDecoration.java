@@ -91,7 +91,7 @@ public class GridDividerDecoration extends RecyclerView.ItemDecoration {
     }
 
     private boolean isLastColumn(RecyclerView parent, int pos, int spanCount,
-                                 int childCount) {
+            int childCount) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
             if ((pos + 1) % spanCount == 0) {// 如果是最后一列，则不需要绘制右边
@@ -115,7 +115,7 @@ public class GridDividerDecoration extends RecyclerView.ItemDecoration {
     }
 
     private boolean isLastRow(RecyclerView parent, int pos, int spanCount,
-                              int childCount) {
+            int childCount) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
             // childCount = childCount - childCount % spanCount;

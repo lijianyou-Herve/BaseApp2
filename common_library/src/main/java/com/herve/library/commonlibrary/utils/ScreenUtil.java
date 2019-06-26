@@ -76,7 +76,7 @@ public class ScreenUtil {
 
     public static void adaptScreenPortrait(final Activity activity,
 
-                                           final int designWidthInDp) {
+            final int designWidthInDp) {
 
         adaptScreen(activity, designWidthInDp, true);
 
@@ -95,7 +95,7 @@ public class ScreenUtil {
 
     public static void adaptScreenLandscape(final Activity activity,
 
-                                            final int designHeightInDp) {
+            final int designHeightInDp) {
 
         adaptScreen(activity, designHeightInDp, false);
 
@@ -129,9 +129,9 @@ public class ScreenUtil {
 
     private static void adaptScreen(final Activity activity,
 
-                                    final float sizeInDp,
+            final float sizeInDp,
 
-                                    final boolean isVerticalSlide) {
+            final boolean isVerticalSlide) {
         final DisplayMetrics appDm = BaseApplication.getInstance().getResources().getDisplayMetrics();
         //每次创建Activity时，这里的值都会是初始值
         density = appDm.density;
@@ -151,7 +151,7 @@ public class ScreenUtil {
             activityDm.density = activityDm.heightPixels / sizeInDp;
 
         }
-        LogUtils.d("ScreenUtil", "density=" + density +" appDm.density=" +  appDm.density + " appDm.density==" + sysDm.density + " activityDm.density= " + activityDm.density);
+        LogUtils.d("ScreenUtil", "density=" + density + " appDm.density=" + appDm.density + " appDm.density==" + sysDm.density + " activityDm.density= " + activityDm.density);
 
         //当activity的density变化时，application的density也会跟着变化，所以这里要使用前面保存的值
         // activityDm.scaledDensity = activityDm.density * (scaledDensity / density);

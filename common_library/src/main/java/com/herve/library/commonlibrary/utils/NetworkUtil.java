@@ -2,11 +2,8 @@ package com.herve.library.commonlibrary.utils;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
-import com.herve.library.commonlibrary.R;
 
 /**
  * 类描述：判断网络是否可以连接工具类
@@ -44,45 +41,45 @@ public class NetworkUtil {
     }
 
 
-//    private static volatile PromptDialog promptDialog;
-//
-//    /**
-//     * 当判断当前手机没有网络时选择是否打开网络设置
-//     *
-//     * @param context
-//     */
-//    public static void showNoNetWorkDialog(final Context context) {
-//        if (promptDialog == null) {
-//            synchronized (PromptDialog.class) {
-//                if (promptDialog == null) {
-//                    promptDialog = new PromptDialog(context)
-//                            .setTitle(context.getString(R.string.base_warm_hint))
-//                            .setContent(context.getString(R.string.base_no_network_hint))
-//                            .setPositiveButton(context.getString(R.string.base_go))
-//                            .setNegativeButton(context.getString(R.string.base_cancel))
-//                            .setOnButtonClickListener(new PromptDialog.OnButtonClickListener() {
-//                                @Override
-//                                public void onButtonClick(PromptDialog dialog, boolean isPositiveClick) {
-//                                    if (isPositiveClick)
-//                                        AppUtil.openNetworkSetting(context);//前往设置界面
-//                                }
-//                            });
-//                    promptDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-//                        @Override
-//                        public void onDismiss(DialogInterface dialog) {
-//                            promptDialog = null;
-//                        }
-//                    });
-//                    promptDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//                        @Override
-//                        public void onCancel(DialogInterface dialog) {
-//                            promptDialog = null;
-//                        }
-//                    });
-//                    //  promptDialog.show();
-//                }
-//            }
-//        }
-//        promptDialog.show();
-//    }
+    //    private static volatile PromptDialog promptDialog;
+    //
+    //    /**
+    //     * 当判断当前手机没有网络时选择是否打开网络设置
+    //     *
+    //     * @param context
+    //     */
+    //    public static void showNoNetWorkDialog(final Context context) {
+    //        if (promptDialog == null) {
+    //            synchronized (PromptDialog.class) {
+    //                if (promptDialog == null) {
+    //                    promptDialog = new PromptDialog(context)
+    //                            .setTitle(context.getString(R.string.base_warm_hint))
+    //                            .setContent(context.getString(R.string.base_no_network_hint))
+    //                            .setPositiveButton(context.getString(R.string.base_go))
+    //                            .setNegativeButton(context.getString(R.string.base_cancel))
+    //                            .setOnButtonClickListener(new PromptDialog.OnButtonClickListener() {
+    //                                @Override
+    //                                public void onButtonClick(PromptDialog dialog, boolean isPositiveClick) {
+    //                                    if (isPositiveClick)
+    //                                        AppUtil.openNetworkSetting(context);//前往设置界面
+    //                                }
+    //                            });
+    //                    promptDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+    //                        @Override
+    //                        public void onDismiss(DialogInterface dialog) {
+    //                            promptDialog = null;
+    //                        }
+    //                    });
+    //                    promptDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+    //                        @Override
+    //                        public void onCancel(DialogInterface dialog) {
+    //                            promptDialog = null;
+    //                        }
+    //                    });
+    //                    //  promptDialog.show();
+    //                }
+    //            }
+    //        }
+    //        promptDialog.show();
+    //    }
 }

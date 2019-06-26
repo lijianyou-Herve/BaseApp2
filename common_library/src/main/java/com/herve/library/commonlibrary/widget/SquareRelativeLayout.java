@@ -10,33 +10,33 @@ import android.widget.RelativeLayout;
  */
 public class SquareRelativeLayout extends RelativeLayout {
 
-  public SquareRelativeLayout(Context context, AttributeSet attrs,
-      int defStyle) {
-    super(context, attrs, defStyle);
-  }
-
-  public SquareRelativeLayout(Context context, AttributeSet attrs) {
-    super(context, attrs);
-  }
-
-  public SquareRelativeLayout(Context context) {
-    super(context);
-  }
-
-  @Override
-  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    int size = 0;
-
-    int width = getMeasuredWidth();
-    int height = getMeasuredHeight();
-
-    if (width > height) {
-      size = height;
-    } else {
-      size = width;
+    public SquareRelativeLayout(Context context, AttributeSet attrs,
+            int defStyle) {
+        super(context, attrs, defStyle);
     }
-    setMeasuredDimension(size, size);
-  }
+
+    public SquareRelativeLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public SquareRelativeLayout(Context context) {
+        super(context);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int size = 0;
+
+        int width = getMeasuredWidth();
+        int height = getMeasuredHeight();
+
+        if (width > height) {
+            size = height;
+        } else {
+            size = width;
+        }
+        setMeasuredDimension(size, size);
+    }
 
 }

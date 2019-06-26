@@ -53,7 +53,7 @@ public class RSAUtil {
         byte[] publicKey = getPublicKey(hashMap.get(urlKey));
         //公钥用base64编码
         String encodePublic = Base64.encodeToString(publicKey, Base64.DEFAULT);
-//        Log.d("TAG", "base64编码的公钥：" + encodePublic);
+        //        Log.d("TAG", "base64编码的公钥：" + encodePublic);
 
         return encodePublic;
     }
@@ -63,7 +63,7 @@ public class RSAUtil {
         byte[] publicKey = getPublicKey(keyPair);
         //公钥用base64编码
         String encodePublic = Base64.encodeToString(publicKey, Base64.DEFAULT);
-//        Log.d("TAG", "base64编码的公钥：" + encodePublic);
+        //        Log.d("TAG", "base64编码的公钥：" + encodePublic);
 
         return encodePublic;
     }
@@ -73,7 +73,7 @@ public class RSAUtil {
         byte[] privateKey = getPrivateKey(hashMap.get(urlKey));
         //私钥用base64编码
         String encodePrivate = Base64.encodeToString(privateKey, Base64.DEFAULT);
-//        Log.d("TAG", "base64编码的私钥：" + encodePrivate);
+        //        Log.d("TAG", "base64编码的私钥：" + encodePrivate);
         return encodePrivate;
     }
 
@@ -82,7 +82,7 @@ public class RSAUtil {
         byte[] privateKey = getPrivateKey(keyPair);
         //私钥用base64编码
         String encodePrivate = Base64.encodeToString(privateKey, Base64.DEFAULT);
-//        Log.d("TAG", "base64编码的私钥：" + encodePrivate);
+        //        Log.d("TAG", "base64编码的私钥：" + encodePrivate);
         return encodePrivate;
     }
 
@@ -159,7 +159,7 @@ public class RSAUtil {
      * @return
      * @throws Exception
      */
-    public static String decryptWithBase64(String base64Str, String base64PrivateKey)   {
+    public static String decryptWithBase64(String base64Str, String base64PrivateKey) {
         byte[] encrypted = Base64.decode(base64Str, Base64.DEFAULT);//密文要先base64解密
         byte[] privateKey = Base64.decode(base64PrivateKey, Base64.DEFAULT);//秘钥要先base64解密
         try {

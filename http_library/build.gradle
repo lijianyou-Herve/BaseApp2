@@ -31,8 +31,6 @@ dependencies {
 //    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
     //
-    implementation project(':common_library')
-
     //retrofit
     api library.retrofit2
     api library.retrofit2_gson//
@@ -42,6 +40,9 @@ dependencies {
     api library.okhttp
     api library.okhttp_logging
     api library.retrofit2_scalars
+
+    //Log
+    api 'com.orhanobut:logger:2.2.0'
 
 //    //Gson converter
 //    api 'com.squareup.retrofit2:converter-gson:2.4.0'

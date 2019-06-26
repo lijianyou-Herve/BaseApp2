@@ -1,7 +1,7 @@
 package com.example.herve.baseapp.ui.main.Fragments.work.presenter;
 
 
-import com.example.herve.baseapp.base.presenter.MvpBasePresenter;
+import com.herve.library.commonlibrary.base.presenter.MvpBasePresenter;
 
 /**
  * Created           :Herve on 2016/10/10.

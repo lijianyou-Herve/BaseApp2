@@ -52,7 +52,7 @@ dependencies {
     api library.rxlifecycle2_components
 
     //屏幕适配
-    api library.autosize
+//    api library.autosize
 
     //常用工具库
     api library.circleimageview
@@ -78,4 +78,5 @@ dependencies {
     api 'com.orhanobut:logger:2.2.0'
 
     api project(path: ':thrid_sdk_library')
+    api project(':http_library')
 }

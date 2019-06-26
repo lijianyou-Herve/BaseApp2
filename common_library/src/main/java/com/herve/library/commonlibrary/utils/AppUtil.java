@@ -165,7 +165,7 @@ public class AppUtil {
      * @param isShow
      */
     public static void popSoftKeyboard(Context context, View view,
-                                       boolean isShow) {
+            boolean isShow) {
         InputMethodManager imm = (InputMethodManager) context
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         if (isShow) {

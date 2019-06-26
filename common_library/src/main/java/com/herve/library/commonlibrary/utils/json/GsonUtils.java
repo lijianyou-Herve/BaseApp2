@@ -45,7 +45,7 @@ public class GsonUtils {
     }
 
 
-    public static <T> T fromJsonNoCommonClass(String reader, Class listClass){
+    public static <T> T fromJsonNoCommonClass(String reader, Class listClass) {
         T result = (T) gson.fromJson(reader, listClass);
         return result;
     }

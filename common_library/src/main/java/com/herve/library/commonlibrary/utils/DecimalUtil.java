@@ -46,14 +46,17 @@ public class DecimalUtil {
 
     /**
      * 保留小数点后二位
+     *
      * @param num
      * @return
      */
     public static String formatDecimal2(double num) {
         return formatDecimal(num, PATTERN_0_00);
     }
+
     /**
      * 保留小数点后二位
+     *
      * @param num
      * @return
      */

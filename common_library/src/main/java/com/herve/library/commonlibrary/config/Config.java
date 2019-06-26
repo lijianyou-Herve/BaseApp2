@@ -7,6 +7,6 @@ package com.herve.library.commonlibrary.config;
  */
 
 public class Config {
-  //设置网络请求json通用解析类
-  public static Class MClASS;
+    //设置网络请求json通用解析类
+    public static Class MClASS;
 }

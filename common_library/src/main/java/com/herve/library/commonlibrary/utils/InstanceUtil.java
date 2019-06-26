@@ -13,7 +13,6 @@ public class InstanceUtil {
      * @return
      */
     public static <T> T getInstance(Class clazz) {
-
         try {
             return (T) clazz.newInstance();
         } catch (InstantiationException e) {
@@ -21,14 +20,13 @@ public class InstanceUtil {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
     public static Object create(Class mClass) throws IllegalAccessException, InstantiationException {
         switch (mClass.getSimpleName()) {
-//            case "MainPresenter":
-//                return new MainPresenter();
+            //            case "MainPresenter":
+            //                return new MainPresenter();
 
             default:
                 return mClass.newInstance();
